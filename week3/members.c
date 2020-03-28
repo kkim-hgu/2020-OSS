@@ -36,7 +36,7 @@ void m_create(char* n, char* ph, int b, char* c){
 
 T_Record* m_search_by_name(char* n){
     int i;
-    for(i=0; i<_count; i++){
+    for(i=0; i<MAX_MEMBERS; i++){
         if(members[i]!=NULL && strcmp(members[i]->name, n)==0) return members[i];
     }
     return NULL;
@@ -50,7 +50,7 @@ void m_update(T_Record* p, char* ph, int b, char* c){
 
 void m_delete(T_Record* p){
     int i, index;
-    for(i=0; i<_count; i++)
+    for(i=0; i<MAX_MEMBERS; i++)
         if(members[i]==p) {
             index=i;
             break;
@@ -102,7 +102,7 @@ char* m_getcity(T_Record* p){
 int m_get_all_by_name(T_Record* a[], char* n){
     // 회원이름에 문자열이 포함된 모든 레코드 포인터의 배열 만들기    
     int i, c=0;
-    for(i=0; i<_count; i++){
+    for(i=0; i<MAX_MEMBERS; i++){
         if(members[i]!=NULL && strstr(members[i]->name, n)){
             a[c]=members[i];
             c++;
@@ -114,7 +114,7 @@ int m_get_all_by_name(T_Record* a[], char* n){
 int m_get_all_by_city(T_Record* a[], char* n){
     // 회원거주도시가 문자열과 일치하는 모든 레코드 포인터의 배열 만들기 
     int i, c=0;
-    for(i=0; i<_count; i++){
+    for(i=0; i<MAX_MEMBERS; i++){
         if(members[i]!=NULL && (strcmp(members[i]->city, n)==0)){
             a[c]=members[i];
             c++;
